@@ -41,11 +41,17 @@ etiqueta=tk.Label(frame1,text="COLA DE IMPRESIÓN",font=("arial",15))
 etiqueta.grid(row=4, column=0)
 
 
+
+
+frame4=tk.Frame(ventana)
+frame4.configure(width=650, height=100,bg="black",bd=5)
+frame4.place(x=50,y=350)
 etiqueta=tk.Label(frame1,text="ESTADO DE IMPRESIÓN",font=("arial",15))
 etiqueta.grid(row=10, column=0)
 
-frame4=tk.Frame(ventana)
-frame4.configure(width=650, height=70,bg="black",bd=5)
-frame4.place(x=50,y=350)
+boton2=tk.Button(frame1,text="INICIAR IMPRESION")
+boton2.grid(row=11, column=1)
+boton3=tk.Button(frame1,text="DETENER IMPRESION")
+boton3.grid(row=11, column=2)
 
 ventana.mainloop()
