@@ -1,9 +1,25 @@
 import tkinter as tk
+from Documentos import documentos
+
+doc= documentos(" ", 0 )
 
 ventana = tk.Tk()
 ventana.title("Cola de impresión")
 ventana.geometry("800x600")
 ventana.attributes("-alpha",1)
+
+## ---------DEfinicion de las funciones que tiene cada botón y cuadro de texto----
+name_var=tk.StringVar()
+passw_var=tk.StringVar()
+def agregardoc():
+    doc.nombre=name_var.get()
+    doc.n_paginas=passw_var.get()
+
+    print("The name is : " + doc.nombre)
+    print("Number of pages : " + doc.n_paginas)
+
+    name_var.set("")
+    passw_var.set("")
 
 ### Marco 1
 frame1=tk.Frame(ventana)
@@ -19,13 +35,13 @@ frame2.place(x=5,y=30)
 etiqueta=tk.Label(frame2,text="Nombre del documento:",font=("arial",10))
 etiqueta.place(x= 0, y =0)
 entrada1=tk.Entry(frame2)
-entrada1.configure(fg="black",bg="white",font=("arial",10))
+entrada1.configure(fg="black",bg="white",textvariable = name_var,font=("arial",10))
 entrada1.place(x= 200, y =0)
 
 etiqueta2=tk.Label(frame2,text="Numero de páginas:",font=("arial",10))
 etiqueta2.place(x= 0, y =35)
 entrada2=tk.Entry(frame2)
-entrada2.configure(fg="black",bg="white",font=("arial",10))
+entrada2.configure(fg="black",bg="white",textvariable = passw_var,font=("arial",10))
 entrada2.place(x= 200, y =35)
 
 etiqueta3=tk.Label(frame2,text="Tiempo por página (seg):",font=("arial",10))
@@ -34,7 +50,7 @@ entrada3=tk.Entry(frame2)
 entrada3.configure(fg="black",bg="white",font=("arial",10))
 entrada3.place(x= 200, y =75)
 
-boton=tk.Button(frame2,text="AGREGAR A LA COLA")
+boton=tk.Button(frame2,text="AGREGAR A LA COLA",command = agregardoc)
 boton.place(x= 200, y =100)
 
 
@@ -77,3 +93,7 @@ frame7=tk.Frame(frame6)
 frame7.configure(width=765, height=120,bg="white",bd=5)
 frame7.place(x=10,y=30)
 ventana.mainloop()
+
+
+
+
