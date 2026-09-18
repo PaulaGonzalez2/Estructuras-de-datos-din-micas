@@ -64,13 +64,9 @@ def agregar_documento():
 
     nuevo_documento = Documento(nombre, paginas)
 
-    # append agrega al final de la cola.
     cola_impresion.append(nuevo_documento)
 
-    escribir_registro(
-        "Se agregó el documento: " + nombre +
-        " con " + str(paginas) + " páginas."
-    )
+    escribir_registro("Se agregó el documento: " + nombre + " con " + str(paginas) + " páginas.")
 
     nombre_var.set("")
     paginas_var.set("")
@@ -78,11 +74,7 @@ def agregar_documento():
     mostrar_cola()
 
     if not imprimiendo:
-        estado_var.set(
-            "Documento agregado. Hay " +
-            str(len(cola_impresion)) +
-            " documento(s) en cola."
-        )
+        estado_var.set("Documento agregado. Hay " + str(len(cola_impresion)) + " documento(s) en cola.")
 
 
 def iniciar_impresion():
@@ -141,32 +133,19 @@ def imprimir_siguiente_pagina():
     # Se imprime una página.
     documento_actual.pagina_actual += 1
 
-    estado_var.set(
-        "Imprimiendo " + documento_actual.nombre +
-        " - Página " + str(documento_actual.pagina_actual) +
-        " de " + str(documento_actual.numero_paginas)
-    )
+    estado_var.set("Imprimiendo " + documento_actual.nombre +" - Página " + str(documento_actual.pagina_actual) +" de " + str(documento_actual.numero_paginas))
 
-    escribir_registro(
-        documento_actual.nombre +
-        ": página " + str(documento_actual.pagina_actual) +
-        " de " + str(documento_actual.numero_paginas)
-    )
+    escribir_registro(documento_actual.nombre +": página " + str(documento_actual.pagina_actual) +" de " + str(documento_actual.numero_paginas))
 
     mostrar_cola()
 
     # Si ya se imprimieron todas las páginas, el documento termina.
     if documento_actual.pagina_actual == documento_actual.numero_paginas:
-
-        escribir_registro(
-            "Documento terminado: " +
-            documento_actual.nombre
-        )
-
+        escribir_registro("Documento terminado: " + documento_actual.nombre)
         documento_actual = None
 
-    # after espera un segundo sin congelar la ventana.
-    ventana.after(TIEMPO_POR_PAGINA, imprimir_siguiente_pagina)
+   
+    ventana.after(TIEMPO_POR_PAGINA, imprimir_siguiente_pagina) # after espera un segundo sin congelar la ventana
 
 
 # ---------------------------------------
