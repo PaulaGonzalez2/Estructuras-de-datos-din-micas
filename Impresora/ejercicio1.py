@@ -12,8 +12,6 @@ cola_impresion = deque()
 documento_actual = None
 imprimiendo = False
 
-# Tiempo fijo de la impresora.
-# No se pide al usuario.
 TIEMPO_POR_PAGINA = 1000   # 1000 milisegundos = 1 segundo
 
 
