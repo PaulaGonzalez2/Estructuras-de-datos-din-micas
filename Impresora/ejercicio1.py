@@ -210,7 +210,7 @@ etiqueta2.place(x=40, y=80)
 entrada2 = tk.Entry(frame1, textvariable=paginas_var,font=("Arial", 10),width=30)
 entrada2.place(x=220, y=80)
 
-etiqueta3 = tk.Label(frame1,text="Tiempo por página: 1 segundo (fijo)",font=("Arial", 10),bg="lemon chiffon")
+etiqueta3 = tk.Label(frame1,text="Tiempo por página: 1 segundo",font=("Arial", 10),bg="lemon chiffon")
 etiqueta3.place(x=40, y=115)
 
 boton1 = tk.Button(frame1,text="AGREGAR A LA COLA", command=agregar_documento)
