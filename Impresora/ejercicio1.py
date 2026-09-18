@@ -1,5 +1,6 @@
 import tkinter as tk
 from collections import deque
+from PIL import Image, ImageTk
 from Documento import Documento
 
 
@@ -158,7 +159,9 @@ ventana = tk.Tk()
 ventana.title("Cola de impresión")
 ventana.geometry("800x650")
 
-icono_impresora = tk.PhotoImage(file="impresora.png")
+imagen_original = Image.open("Impresora.png")
+imagen_reducida = imagen_original.resize((70, 70))
+icono_impresora = ImageTk.PhotoImage(imagen_reducida)
 
 # Variables para las cajas de texto
 nombre_var = tk.StringVar()
@@ -174,6 +177,10 @@ estado_var.set("No hay documentos en cola")
 
 frame1 = tk.Frame(ventana, bg="lemon chiffon", bd=5)
 frame1.place(x=5, y=5, width=790, height=175)
+
+imagen_impresora = tk.Label(frame1,image=icono_impresora,bg="lemon chiffon")
+imagen_impresora.place(x=650, y=10)
+
 
 etiqueta0 = tk.Label(frame1, text="SIMULADOR DE IMPRESORA", font=("Arial", 15, "bold"), bg="lemon chiffon")
 etiqueta0.place(x=220, y=5)
