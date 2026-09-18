@@ -1,6 +1,6 @@
 import tkinter as tk
 from collections import deque
-from Documentos import Documento
+from Documento import Documento
 
 
 # ---------------------------------------
