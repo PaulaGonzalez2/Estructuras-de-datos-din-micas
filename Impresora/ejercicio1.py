@@ -3,6 +3,8 @@ from collections import deque
 from Documento import Documento
 
 
+
+
 # ---------------------------------------
 # VARIABLES DEL PROGRAMA
 # ---------------------------------------
@@ -156,6 +158,7 @@ ventana = tk.Tk()
 ventana.title("Cola de impresión")
 ventana.geometry("800x650")
 
+icono_impresora = tk.PhotoImage(file="impresoraa.png")
 
 # Variables para las cajas de texto
 nombre_var = tk.StringVar()
