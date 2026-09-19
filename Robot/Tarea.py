@@ -1,5 +1,5 @@
 class Tarea:
-    def __init__(self, nombre, tipo, tiempode_ejecucion):
+    def __init__(self, nombre, tipo, tiempo_ejecucion):
         self.nombre= nombre
         self.tipo=tipo
-        self.tiempode_ejecucion=tiempode_ejecucion
+        self.tiempo_ejecucion=tiempo_ejecucion
