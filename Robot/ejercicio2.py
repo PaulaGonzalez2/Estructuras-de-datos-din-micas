@@ -90,33 +90,29 @@ def detener_simulacion(estado_var, registro, robot):
         estado_var.set("No hay una simulación activa")
 
 
-def ejecutar_siguiente_tarea(ventana, estado_var,lista_pila, registro, robot):
-
+def ejecutar_siguiente_tarea(ventana,estado_var,lista_pila,registro,robot):
     if not robot.ejecutando:
         return
 
-    # Si no hay tarea actual, se toma la tarea de la parte de arriba
     if robot.tarea_actual is None:
         if not robot.sacar_tarea():
             robot.ejecutando = False
-
             estado_var.set("No hay más tareas en la pila")
-
-            escribir_registro(registro,"El robot terminó todas sus tareas.")
-
+            escribir_registro(
+                registro,
+                "El robot terminó todas sus tareas."
+            )
             mostrar_pila(lista_pila, robot)
             return
 
-    escribir_registro(registro,"Iniciando tarea: " + robot.tarea_actual.nombre)
-
     tarea = robot.tarea_actual
 
-    estado_var.set("Ejecutando: " + tarea.nombre +" - Tipo: " + tarea.tipo +" - Duración: " + str(tarea.tiempo_ejecucion) +" segundos")
+    escribir_registro(registro,"Iniciando tarea: " + tarea.nombre)
+
+    estado_var.set("Ejecutando: " + tarea.nombre + " - Tipo: " + tarea.tipo +" - Duración: " +str(tarea.tiempo_ejecucion) + " segundos" )
+
     mostrar_pila(lista_pila, robot)
-
-    # after espera el tiempo indicado sin bloquear la ventana.
     ventana.after(tarea.tiempo_ejecucion * 1000,terminar_y_continuar,ventana,estado_var,lista_pila,registro,robot)
-
 
 def terminar_y_continuar(ventana, estado_var,lista_pila, registro, robot):
 
@@ -146,7 +142,7 @@ def main():
     # Se crea el objeto Robot.
     # En su constructor se inicializan la pila,
     # la tarea actual y el estado de ejecución.
-    Robotobj = robot()
+    robotobj = robot()
 
     nombre_var = tk.StringVar()
     tipo_var = tk.StringVar()
@@ -189,7 +185,7 @@ def main():
     etiqueta4 = tk.Label(frame1, text="segundos", font=("Arial", 10),bg="light cyan")
     etiqueta4.place(x=425, y=120)
 
-    boton1 = tk.Button(frame1,text="AGREGAR A LA PILA",command=lambda: agregar_tarea(nombre_var,tipo_var,tiempo_var,estado_var, lista_pila, registro, Robotobj))
+    boton1 = tk.Button(frame1,text="AGREGAR A LA PILA",command=lambda: agregar_tarea(nombre_var,tipo_var,tiempo_var,estado_var, lista_pila, registro, robotobj))
     boton1.place(x=500, y=85)
 
     # ---------------------------------------
@@ -221,7 +217,7 @@ def main():
     boton2 = tk.Button(frame3,text="INICIAR SIMULACIÓN",command=lambda: iniciar_simulacion(ventana,estado_var,lista_pila, registro, robotobj ))
     boton2.place(x=180, y=75)
 
-    boton3 = tk.Button(frame3,text="DETENER SIMULACIÓN",command=lambda: detener_simulacion(estado_var, registro,robot))
+    boton3 = tk.Button(frame3,text="DETENER SIMULACIÓN",command=lambda: detener_simulacion(estado_var, registro,robotobj))
     boton3.place(x=400, y=75)
 
     # ---------------------------------------
