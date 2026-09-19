@@ -1,0 +1,18 @@
+import tkinter as tk
+from Tarea import Tarea
+from Robot import robot
+
+def escribir_registro(registro, mensaje):
+    registro.insert(tk.END, mensaje + "\n")
+    registro.see(tk.END)
+
+
+def mostrar_pila(lista_pila, robot):
+    lista_pila.delete(0, tk.END)
+
+    if robot.tarea_actual is not None:
+        texto = "EJECUTANDO: "
+        texto += robot.tarea_actual.nombre
+        texto += " - " + robot.tarea_actual.tipo
+
+        lista_pila.insert(tk.END, texto)
