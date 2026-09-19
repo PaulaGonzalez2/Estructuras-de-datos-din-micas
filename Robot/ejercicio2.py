@@ -97,7 +97,6 @@ def ejecutar_siguiente_tarea(ventana, estado_var,lista_pila, registro, robot):
 
     # Si no hay tarea actual, se toma la tarea de la parte de arriba
     if robot.tarea_actual is None:
-
         if not robot.sacar_tarea():
             robot.ejecutando = False
 
@@ -108,7 +107,7 @@ def ejecutar_siguiente_tarea(ventana, estado_var,lista_pila, registro, robot):
             mostrar_pila(lista_pila, robot)
             return
 
-        escribir_registro(registro,"Iniciando tarea: " + robot.tarea_actual.nombre)
+    escribir_registro(registro,"Iniciando tarea: " + robot.tarea_actual.nombre)
 
     tarea = robot.tarea_actual
 
